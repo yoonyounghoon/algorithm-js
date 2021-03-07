@@ -11,25 +11,21 @@
 // 목적 : n의 다음 큰 숫자 구하기.
 
 const nextBigNumber = (number) => {
-  let count = 0;
-  let count2 = 0;
-  let Snumber = number.toString(2);
-  let result = number + 1;
-  for (let i = 0; i < Snumber.length; i++) {
-    if (Number(Snumber[i]) === 1) {
-      count++;
-    }
+  let numberCount = 0;
+  let nextNumberCount = 0;
+  let nextNumber = number + 1;
+
+  for (let i = 0; i < number.toString(2).length; i++) {
+    if (Number(number.toString(2)[i]) === 1) numberCount++;
   }
 
   while (true) {
-    count2 = 0;
-    for (let i = 0; i < result.toString(2).length; i++) {
-      if (Number(result.toString(2)[i]) === 1) {
-        count2++;
-      }
+    nextNumberCount = 0;
+    for (let i = 0; i < nextNumber.toString(2).length; i++) {
+      if (Number(nextNumber.toString(2)[i]) === 1) nextNumberCount++;
     }
-    if (count === count2) return result;
-    result += 1;
+    if (numberCount === nextNumberCount) return nextNumber;
+    nextNumber += 1;
   }
 };
 
