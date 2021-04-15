@@ -3,27 +3,25 @@
 // 문자열 s가 주어졌을 때, s를 JadenCase로 바꾼
 // 문자열을 리턴하는 함수, solution을 완성해주세요.
 
-// const JadenCase = (string) => {
-//   let stringArr = string.toLowerCase().split(" ");
-//   let result = stringArr.map((value) => {
-//     value = value.replace(value.charAt(0), value[0].toUpperCase());
-//     return value;
-//   });
+const JadenCase = (string) => {
+  let stringArr = string.split(" ");
+  let result = stringArr.map((value) => {
+    return value.charAt(0).toUpperCase() + value.substring(1).toLowerCase();
+  });
+  return result.join(" ");
+};
 
-//   return result.join(" ");
-// };
+// function solution(s) {
+//   s = s.toLowerCase();
+//   var answer = s
+//     .split(" ")
+//     .map((s) => {
+//       let arr = s.split("");
+//       if (arr[0] != null) arr[0] = arr[0].toUpperCase();
+//       return arr.join("");
+//     })
+//     .join(" ");
+//   return answer;
+// }
 
-function solution(s) {
-  s = s.toLowerCase();
-  var answer = s
-    .split(" ")
-    .map((s) => {
-      let arr = s.split("");
-      if (arr[0] != null) arr[0] = arr[0].toUpperCase();
-      return arr.join("");
-    })
-    .join(" ");
-  return answer;
-}
-
-console.log(JadenCase("3people unFollowed me"));
+console.log(JadenCase("3people  unFollowed me"));
