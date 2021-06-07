@@ -22,12 +22,14 @@ function replace(id) {
 
 //  4단계 : new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거합니다.
 function removeStartEnd(id) {
+  if (id.startsWith('.') && id.endsWith('.')) {
+    return id.slice(1, id.length - 1);
+  }
   if (id.startsWith('.')) {
     return id.slice(1);
-  } else if (id.endsWith('.')) {
-    return id.slice(0, id.length);
-  } else if (id.startsWith('.') && id.endsWith('.')) {
-    return id.slice(1, id.length);
+  }
+  if (id.endsWith('.')) {
+    return id.slice(0, id.length - 1);
   }
   return id;
 }
@@ -45,10 +47,10 @@ function checkMaxLength(id) {
   if (id.length >= 16) {
     newId = id.substring(0, 15);
     if (newId.endsWith('.')) {
-      return newId.substring(0, 15);
+      return newId.substring(0, 14);
     }
-    return newId;
   }
+  return newId;
 }
 
 // 7단계 new_id의 길이가 2자 이하라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복해서 끝에 붙입니다.
@@ -69,16 +71,17 @@ function solution(new_id) {
 
   id = removeStartEnd(id);
 
-  // id = checkNull(id);
+  id = checkNull(id);
 
-  // id = checkMaxLength(id);
+  id = checkMaxLength(id);
 
-  // id = checkMinLength(id);
+  id = checkMinLength(id);
 
   return id;
 }
-// console.log(solution('...!@BaT#*..y.abcdefghijklm'));
+console.log(solution('...!@BaT#*..y.abcdefghijklm'));
 console.log(solution('z-+.^.'));
-// console.log(solution('=.='));
-// console.log(solution('123_.def'));
-// console.log(solution('abcdefghijklmn.p'));
+console.log(solution('=.='));
+console.log(solution('123_.def'));
+console.log(solution('abcdefghijklmn.p'));
+console.log(solution('.aa-.'));
