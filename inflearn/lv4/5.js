@@ -15,7 +15,7 @@ function getCombination(arr, selectNumber) {
 function solution(n, k, card) {
   const combination = getCombination(card, 3);
   let result = combination.map((value) => value.reduce((a, b) => a + b));
-
+  result = [...new Set(result)];
   return result.sort((a, b) => b - a)[k - 1];
 }
 
